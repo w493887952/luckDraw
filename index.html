@@ -1,16 +1,79 @@
-<!DOCTYPE html>
+<html>
 
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <title></title>
-  
+<head>
+    <meta charset="UTF-8">
+    <title>假期</title>
+    <style>
+        .box {
+            display: flex;
+            justify-content: center;
+            line-height: 40px;
 
+        }
+
+        .mytime {
+            width: 150px;
+        }
+    </style>
 </head>
 
 <body>
- <div>你好啊，小倩倩</div>
+
+    <div>
+        <div class="box">距离元旦：<div class="mytime jsTime" data-time="2023-01-01 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离春节：<div class="mytime jsTime" data-time="2023-01-21 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离清明：<div class="mytime jsTime" data-time="2023-04-05 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离五一：<div class="mytime jsTime" data-time="2023-05-01 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离中秋：<div class="mytime jsTime" data-time="2023-09-29 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离国庆：<div class="mytime jsTime" data-time="2023-10-01 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离元旦：<div class="mytime jsTime" data-time="2024-01-01 00:00:00">时间1</div>
+        </div>
+        <div class="box">距离春节：<div class="mytime jsTime" data-time="2024-02-09 00:00:00">时间1</div>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    const countdown = {
+        domList: document.querySelectorAll('.jsTime'),
+        formatNumber(n) {
+            // return n.toString().padStart(2, '0');  // 用padStart方法要注意兼容问题
+            n = n.toString();
+            return n[1] ? n : '0' + n;
+        },
+        setTime(dom) {
+            //获取设置的时间 如：2019-3-28 14:00:00  ios系统得加正则.replace(/\-/g, '/');
+            const leftTime = new Date(dom.getAttribute('data-time').replace(/\-/g, '/')) - new Date();
+            if (leftTime >= 0) {
+                const d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+                const h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+                const m = Math.floor(leftTime / 1000 / 60 % 60);
+                const s = Math.floor(leftTime / 1000 % 60);
+                dom.innerHTML = `剩余${d > 0 ? d + '天' : ''}${[h, m, s].map(this.formatNumber).join(':')}`;
+            } else {
+                clearInterval(dom.$timer);
+                dom.innerHTML = '倒计时已结束';
+            }
+        },
+        start() {
+            this.domList.forEach((dom) => {
+                this.setTime(dom);
+                dom.$timer = setInterval(() => {
+                    this.setTime(dom);
+                }, 1e3);
+            });
+        },
+    };
+    countdown.start();
+</script>
 
 
 
-
-</body></html>
+</html>
