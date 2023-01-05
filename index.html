@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>假期</title>
     <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+        }
+
         .box {
             display: flex;
             justify-content: center;
@@ -14,28 +20,118 @@
         .mytime {
             width: 150px;
         }
+
+        .bj {
+            background-color: #cdd79c;
+            height: 100%;
+            padding-top: 50px;
+        }
     </style>
 </head>
 
 <body>
 
-    <div>
-        <div class="box">距离元旦：<div class="mytime jsTime" data-time="2023-01-01 00:00:00">时间1</div>
+    <div class="bj">
+        <table border="1px" cellpadding="10px" cellspacing="0" style="margin: auto">
+            <tr>
+                <td>节日</td>
+                <td>放假时间</td>
+                <td>天数</td>
+                <td>倒计时</td>
+            </tr>
+            <tr>
+                <td>元旦</td>
+                <td>12月31日 - 01月02日</td>
+                <td>3</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2023-01-01 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>春节</td>
+                <td>01月21日 - 01月27日</td>
+                <td>7</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2023-01-21 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>清明</td>
+                <td>04月05日 - 04月05日</td>
+                <td>1</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2023-04-05 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>劳动</td>
+                <td>04月29日 - 05月03日</td>
+                <td>5</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2023-04-29 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>端午</td>
+                <td>06月22日 - 06月24日</td>
+                <td>3</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2023-06-22 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>中秋/国庆</td>
+                <td>09月29日 - 10月06日</td>
+                <td>8</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2023-09-29 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>元旦</td>
+                <td>12月31日 - 01月02日</td>
+                <td>3</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2024-01-01 00:00:00">时间1</div>
+                </td>
+            </tr>
+            <tr>
+                <td>春节</td>
+                <td>02月09日 - 02月15日</td>
+                <td>7</td>
+                <td>
+                    <div class="mytime jsTime" data-time="2024-02-09 00:00:00">时间1</div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- <div class="box">距离元旦：<div class="mytime jsTime" data-time="2023-01-01 00:00:00">时间1</div>
+            <div>3天</div>
         </div>
         <div class="box">距离春节：<div class="mytime jsTime" data-time="2023-01-21 00:00:00">时间1</div>
+            <div>7天</div>
         </div>
         <div class="box">距离清明：<div class="mytime jsTime" data-time="2023-04-05 00:00:00">时间1</div>
+            <div>1天</div>
         </div>
-        <div class="box">距离五一：<div class="mytime jsTime" data-time="2023-05-01 00:00:00">时间1</div>
+        <div class="box">距离五一：<div class="mytime jsTime" data-time="2023-04-29 00:00:00">时间1</div>
+            <div>5天</div>
+        </div>
+        <div class="box">距离端午：<div class="mytime jsTime" data-time="2023-06-22 00:00:00">时间1</div>
+            <div>3天</div>
         </div>
         <div class="box">距离中秋：<div class="mytime jsTime" data-time="2023-09-29 00:00:00">时间1</div>
+            <div>8天</div>
         </div>
         <div class="box">距离国庆：<div class="mytime jsTime" data-time="2023-10-01 00:00:00">时间1</div>
+            <div>8天</div>
         </div>
         <div class="box">距离元旦：<div class="mytime jsTime" data-time="2024-01-01 00:00:00">时间1</div>
+            <div>3天</div>
         </div>
         <div class="box">距离春节：<div class="mytime jsTime" data-time="2024-02-09 00:00:00">时间1</div>
-        </div>
+            <div>7天</div>
+        </div> -->
 
     </div>
 </body>
@@ -59,7 +155,7 @@
                 dom.innerHTML = `剩余${d > 0 ? d + '天' : ''}${[h, m, s].map(this.formatNumber).join(':')}`;
             } else {
                 clearInterval(dom.$timer);
-                dom.innerHTML = '倒计时已结束';
+                dom.innerHTML = '已休';
             }
         },
         start() {
